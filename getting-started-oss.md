@@ -4,7 +4,7 @@ This page shows how to quickly set up the Steel Toe Configuration extension in a
 
 We will need a running Config Server from which our application can request configuration. To run the Config Server, we'll also need the Java Development Kit (JDK). http://www.oracle.com/technetwork/java/javase/downloads/index.html[Download] the JDK from the Oracle website and follow the instructions to http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html[install] it. Then open Control Panel, search for and select "Edit the system environment variables", and add a system environment variable called `JAVA_HOME`, with the JDK installation's path (something like `C:\Program Files\Java\jdk1.8.0_91`) as the value.
 
-We will need https://git-scm.com[Git] in order to obtain the code for the Config Server that we'll be using. If you haven't already installed Git, follow the https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[instructions] to do so. You may wish to look at https://git-for-windows.github.io[Git for Windows].
+We will need (https://git-scm.com)[Git] in order to obtain the code for the Config Server that we'll be using. If you haven't already installed Git, follow the https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[instructions] to do so. You may wish to look at https://git-for-windows.github.io[Git for Windows].
 
 Now for the Config Server! Visit the https://github.com/SteelToeOSS/configserver[SteelToeOSS/configserver] repository on GitHub. Copy the URL given in the "Clone or download" dropdown and use `git clone` to get a local copy of the repository:
 
