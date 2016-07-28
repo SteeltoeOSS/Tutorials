@@ -1,6 +1,6 @@
 This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a http://cloud.spring.io/spring-cloud-config/[Spring Cloud Config] Config Server.
 
-=== Step 0: Run a Config Server
+### Step 0: Run a Config Server
 
 We will need a running Config Server from which our application can request configuration. To run the Config Server, we'll also need the Java Development Kit (JDK). http://www.oracle.com/technetwork/java/javase/downloads/index.html[Download] the JDK from the Oracle website and follow the instructions to http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html[install] it. Then open Control Panel, search for and select "Edit the system environment variables", and add a system environment variable called `JAVA_HOME`, with the JDK installation's path (something like `C:\Program Files\Java\jdk1.8.0_91`) as the value.
 
@@ -23,7 +23,7 @@ configserver> mvnw spring-boot:run
 2016-05-25 15:25:44.298  INFO 98987 --- [           main] o.s.c.c.server.ConfigServerApplication   : Started ConfigServerApplication in 2.634 seconds (JVM running for 58.236)
 ```
 
-=== Step 1: Add the Steel Toe Configuration dependency
+### Step 1: Add the Steel Toe Configuration dependency
 
 https://docs.asp.net/en/latest/client-side/yeoman.html[Generate] a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. For our example purposes, call the application &#8220;Foo&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
 
@@ -48,7 +48,7 @@ In the `dependencies` block of our `project.json` file, add the `SteelToe.Extens
   },
 ```
 
-=== Step 2: Configure the Config Server settings
+### Step 2: Configure the Config Server settings
 
 Next, open `appsettings.json`. We need to specify a couple of settings for Steel Toe Configuration to locate the Config Server and then to request our application's specific configuration from it:
 
@@ -73,7 +73,7 @@ Spring Cloud commonly uses `spring.application.name` to identify client applicat
 
 The other property, `spring.cloud.config.uri`, tells a Steel Toe Configuration client application where to locate its Config Server. We give this the URL of the Config Server that we have running on port 8888.
 
-=== Step 3: Add the Config Server configuration provider
+### Step 3: Add the Config Server configuration provider
 
 In the constructor of our `Startup.cs`, where we use the `ConfigurationBuilder`, we need to add the Config Server as a configuration source.
 
@@ -114,7 +114,7 @@ Now drop down to `ConfigureServices()` and add the Config Server to our `IServic
 
 This method also takes care of adding the `IOptions` service and adds `IConfigurationRoot` as a service. This will become important in the next step, which is...
 
-=== Step 4: Use configuration in the application
+### Step 4: Use configuration in the application
 
 Open our `HomeController.cs` file. We need to give this controller an `IConfigurationRoot` property and a constructor to proceed further:
 
@@ -166,7 +166,7 @@ Create the `ConfigServer.cshtml` view in `Views/Home/`. It should look like this
 </table>
 ```
 
-=== Step 5: Voila!
+### Step 5: Voila!
 
 That's it! Run `dotnet restore` to install all of our dependencies, then run the application:
 
