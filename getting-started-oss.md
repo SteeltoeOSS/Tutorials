@@ -1,18 +1,18 @@
-This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a http://cloud.spring.io/spring-cloud-config/[Spring Cloud Config] Config Server.
+This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Config](http://cloud.spring.io/spring-cloud-config/) Config Server.
 
 ### Step 0: Run a Config Server
 
-We will need a running Config Server from which our application can request configuration. To run the Config Server, we'll also need the Java Development Kit (JDK). http://www.oracle.com/technetwork/java/javase/downloads/index.html[Download] the JDK from the Oracle website and follow the instructions to http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html[install] it. Then open Control Panel, search for and select "Edit the system environment variables", and add a system environment variable called `JAVA_HOME`, with the JDK installation's path (something like `C:\Program Files\Java\jdk1.8.0_91`) as the value.
+We will need a running Config Server from which our application can request configuration. To run the Config Server, we'll also need the Java Development Kit (JDK). [Download](http://www.oracle.com/technetwork/java/javase/downloads/index.html) the JDK from the Oracle website and follow the instructions to [install](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html) it. Then open Control Panel, search for and select "Edit the system environment variables", and add a system environment variable called `JAVA_HOME`, with the JDK installation's path (something like `C:\Program Files\Java\jdk1.8.0_91`) as the value.
 
-We will need (https://git-scm.com)[Git] in order to obtain the code for the Config Server that we'll be using. If you haven't already installed Git, follow the https://git-scm.com/book/en/v2/Getting-Started-Installing-Git[instructions] to do so. You may wish to look at https://git-for-windows.github.io[Git for Windows].
+We will need [Git](https://git-scm.com) in order to obtain the code for the Config Server that we'll be using. If you haven't already installed Git, follow the [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to do so. You may wish to look at [Git for Windows](https://git-for-windows.github.io).
 
-Now for the Config Server! Visit the https://github.com/SteelToeOSS/configserver[SteelToeOSS/configserver] repository on GitHub. Copy the URL given in the "Clone or download" dropdown and use `git clone` to get a local copy of the repository:
+Now for the Config Server! Visit the [SteelToeOSS/configserver](https://github.com/SteelToeOSS/configserver) repository on GitHub. Copy the URL given in the "Clone or download" dropdown and use `git clone` to get a local copy of the repository:
 
 ```
 > git clone git@github.com:SteelToeOSS/configserver.git
 ```
 
-When the clone operation has finished, `cd` into the Config Server's directory. The Config Server is built using https://maven.apache.org[Apache Maven], and the project that we've just downloaded includes a Maven "wrapper" file (`mvnw.cmd`) that can be used in place of an actual Maven installation to run build commands. Start up the Config Server with the `mvnw spring-boot:run` command:
+When the clone operation has finished, `cd` into the Config Server's directory. The Config Server is built using [Apache Maven](https://maven.apache.org), and the project that we've just downloaded includes a Maven "wrapper" file (`mvnw.cmd`) that can be used in place of an actual Maven installation to run build commands. Start up the Config Server with the `mvnw spring-boot:run` command:
 
 ```
 configserver> mvnw spring-boot:run
@@ -25,7 +25,7 @@ configserver> mvnw spring-boot:run
 
 ### Step 1: Add the Steel Toe Configuration dependency
 
-https://docs.asp.net/en/latest/client-side/yeoman.html[Generate] a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. For our example purposes, call the application &#8220;Foo&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
+[Generate](https://docs.asp.net/en/latest/client-side/yeoman.html) a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. For our example purposes, call the application &#8220;Foo&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
