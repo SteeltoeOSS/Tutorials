@@ -1,6 +1,6 @@
 This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Services](https://network.pivotal.io/products/p-spring-cloud-services) Config Server service instance on [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF). We'll use [PCF Dev](http://pivotal.io/pcf-dev) for this purpose; if you don't yet have PCF Dev installed, follow the [tutorial at pivotal.io](http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction) before proceeding with these instructions.
 
-=== Step 0: Create a Config Server Service Instance
+### Step 0: Create a Config Server Service Instance
 
 We will need a Config Server service instance from which our application can request configuration. To make this Spring Cloud Services service available, you must start PCF Dev with the flag `-s scs`:
 
@@ -56,9 +56,9 @@ Status: create succeeded
 ...
 ```
 
-=== Step 1: Add the Steel Toe Configuration dependency
+### Step 1: Add the Steel Toe Configuration dependency
 
-https://docs.asp.net/en/latest/client-side/yeoman.html[Generate] a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. Call the application &#8220;Steeltoe PCF Example&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
+[Generate](https://docs.asp.net/en/latest/client-side/yeoman.html) a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. Call the application &#8220;Steeltoe PCF Example&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -81,7 +81,7 @@ In the `dependencies` block of our `project.json` file, add the `Pivotal.Extensi
   },
 ```
 
-=== Step 1.5:
+### Step 1.5:
 
 Create a Cloud Foundry manifest for our application. It should be a file called `manifest.yml` and should look like so:
 
@@ -100,7 +100,7 @@ applications:
 
 This sets up our application to use the Config Server service instance we've created. It also tells PCF Dev to stage this application using the [cloudfoundry-community/dotnet-core-buildpack](https://github.com/cloudfoundry-community/dotnet-core-buildpack).
 
-=== Step 2: Configure the Config Server settings
+### Step 2: Configure the Config Server settings
 
 Next, open `appsettings.json`. We need to specify a setting for Steel Toe Configuration to request our application's specific configuration from the Config Server:
 
@@ -125,7 +125,7 @@ Spring Cloud commonly uses `spring.application.name` to identify client applicat
 
 The other property, `spring.cloud.config.uri`, is optional in our case. This tells a Steel Toe Configuration client application where to locate its Config Server. We give this a value of `http://localhost:8888` (the default port on which a Spring Cloud Config Server runs). As we'll soon see, however, this will be overridden when we bring in the Cloud Foundry Config Server, in:
 
-=== Step 3: Add the Config Server configuration provider
+### Step 3: Add the Config Server configuration provider
 
 In the constructor of our `Startup.cs`, where we use the `ConfigurationBuilder`, we need to add the Config Server as a configuration source.
 
@@ -168,7 +168,7 @@ With the provider in place, we'll next add the Config Server to the set of servi
 
 The `AddConfigServer()` method also takes care of adding the `IOptions` service and adds `IConfigurationRoot` as a service. This will become important in the next step, which is...
 
-=== Step 4: Use configuration in the application
+### Step 4: Use configuration in the application
 
 Open our `HomeController.cs` file. We need to give this controller an `IConfigurationRoot` property and a constructor to proceed further:
 
@@ -220,7 +220,7 @@ Create the `ConfigServer.cshtml` view in `Views/Home/`. It should look like this
 </table>
 ```
 
-=== Step 5: Voila!
+### Step 5: Voila!
 
 That's it! Run `dotnet restore` to install all of our dependencies:
 
@@ -252,5 +252,5 @@ App started
 
 In a browser, visit the path `/Home/ConfigServer` on the application. You should see something like this:
 
-![config-server UI](http://steeltoe.io/images/getting-started/configuration-pcf.png)
+![Steeltoe-PCF-Example Config Server page]](images/getting-started/configuration-pcf.png)
 
