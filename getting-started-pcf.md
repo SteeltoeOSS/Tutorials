@@ -252,5 +252,5 @@ App started
 
 In a browser, visit the path `/Home/ConfigServer` on the application. You should see something like this:
 
-![Steeltoe-PCF-Example Config Server page]](images/getting-started/configuration-pcf.png)
+![Steeltoe-PCF-Example Config Server page](images/getting-started/configuration-pcf.png)
 
