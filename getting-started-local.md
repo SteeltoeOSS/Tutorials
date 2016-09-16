@@ -1,4 +1,4 @@
-This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Config](http://cloud.spring.io/spring-cloud-config/) Config Server.
+This page shows how to quickly set up the Steeltoe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Config](http://cloud.spring.io/spring-cloud-config/) Config Server.
 
 ### Step 0: Run a Config Server
 
@@ -25,7 +25,7 @@ configserver> mvnw spring-boot:run
 2016-05-25 15:25:44.298  INFO 98987 --- [           main] o.s.c.c.server.ConfigServerApplication   : Started ConfigServerApplication in 2.634 seconds (JVM running for 58.236)
 ```
 
-### Step 1: Add the Steel Toe Configuration dependency
+### Step 1: Add the Steeltoe Configuration dependency
 
 [Generate](https://docs.asp.net/en/latest/client-side/yeoman.html) a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. Call the application &#8220;Steeltoe-OSS-Example&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
 

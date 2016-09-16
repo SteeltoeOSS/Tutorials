@@ -1,4 +1,4 @@
-This page shows how to quickly set up the Steel Toe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Services](https://network.pivotal.io/products/p-spring-cloud-services) Config Server service instance on [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF). We'll use [PCF Dev](http://pivotal.io/pcf-dev) for this purpose; if you don't yet have PCF Dev installed, follow the [tutorial at pivotal.io](http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction) before proceeding with these instructions.
+This page shows how to quickly set up the Steeltoe Configuration extension in an ASP.NET Core application for accessing configuration values served by a [Spring Cloud Services](https://network.pivotal.io/products/p-spring-cloud-services) Config Server service instance on [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF). We'll use [PCF Dev](http://pivotal.io/pcf-dev) for this purpose; if you don't yet have PCF Dev installed, follow the [tutorial at pivotal.io](http://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/introduction) before proceeding with these instructions.
 
 ### Step 0: Create a Config Server Service Instance
 
@@ -56,7 +56,7 @@ Status: create succeeded
 ...
 ```
 
-### Step 1: Add the Steel Toe Configuration dependency
+### Step 1: Add the Steeltoe Configuration dependency
 
 [Generate](https://docs.asp.net/en/latest/client-side/yeoman.html) a new ASP.NET Core application using Yeoman. When the generator asks what type of application you want to create, select the "Web Application Basic [without Membership and Authorization]" option. Call the application &#8220;Steeltoe PCF Example&#8221;. Then create a `nuget.config` file, and within it, list the Steel Toe feeds:
 
@@ -123,7 +123,7 @@ Next, open `appsettings.json`. We need to specify a setting for Steel Toe Config
 
 Spring Cloud commonly uses `spring.application.name` to identify client applications. In the case of the Config Server, the files in the Config Server's Git or Subversion repository will include application names in their filenames, and the Server uses `spring.application.name` to determine which files in its repository contain configuration for our application.
 
-The other property, `spring.cloud.config.uri`, is optional in our case. This tells a Steel Toe Configuration client application where to locate its Config Server. We give this a value of `http://localhost:8888` (the default port on which a Spring Cloud Config Server runs). As we'll soon see, however, this will be overridden when we bring in the Cloud Foundry Config Server, in:
+The other property, `spring.cloud.config.uri`, is optional in our case. This tells a Steeltoe Configuration client application where to locate its Config Server. We give this a value of `http://localhost:8888` (the default port on which a Spring Cloud Config Server runs). As we'll soon see, however, this will be overridden when we bring in the Cloud Foundry Config Server, in:
 
 ### Step 3: Add the Config Server configuration provider
 
@@ -149,7 +149,7 @@ namespace Steeltoe_PCF_Example
         }
 ```
 
-Don't forget the `using` statement at the top. In fact, take special note of that `using` statement. Steel Toe's Cloud Foundry configuration provider parses the special `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables provided to Cloud Foundry applications. When we push this application to PCF Dev, `VCAP_APPLICATION` will be set to contain application information (such as our application's space name, space ID, URIs, host, and port), and `VCAP_SERVICES` will be set to contain information for the services that are bound to the application (including a service instance's name, plan, tags, and connection information).
+Don't forget the `using` statement at the top. In fact, take special note of that `using` statement. Steeltoe's Cloud Foundry configuration provider parses the special `VCAP_APPLICATION` and `VCAP_SERVICES` environment variables provided to Cloud Foundry applications. When we push this application to PCF Dev, `VCAP_APPLICATION` will be set to contain application information (such as our application's space name, space ID, URIs, host, and port), and `VCAP_SERVICES` will be set to contain information for the services that are bound to the application (including a service instance's name, plan, tags, and connection information).
 
 The connection information for our Config Server service instance, once it's made available to our application via the environment variables, will override what we specified in our `appsettings.json`. That setting is still useful to have for running an application locally against a local Config Server, but since we've placed the environment variables configuration provider higher in priority than `appsettings.json` (it's added _after_ `appsettings.json`), the information from the environment will override our hard-coded setting.
 
