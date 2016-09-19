@@ -6,10 +6,10 @@ We will need a running Config Server from which our application can request conf
 
 We will need [Git](https://git-scm.com) in order to obtain the code for the Config Server that we'll be using. If you haven't already installed Git, follow the [instructions](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to do so. You may wish to look at [Git for Windows](https://git-for-windows.github.io).
 
-Now for the Config Server! Visit the [SteelToeOSS/configserver](https://github.com/SteelToeOSS/configserver) repository on GitHub. Copy the URL given in the "Clone or download" dropdown and use `git clone` to get a local copy of the repository:
+Now for the Config Server! Visit the [SteeltoeOSS/configserver](https://github.com/SteeltoeOSS/configserver) repository on GitHub. Copy the URL given in the "Clone or download" dropdown and use `git clone` to get a local copy of the repository:
 
 ```
-> git clone git@github.com:SteelToeOSS/configserver.git
+> git clone git@github.com:SteeltoeOSS/configserver.git
 ```
 
 When the clone operation has finished, `cd` into the Config Server's directory. The Config Server is built using [Apache Maven](https://maven.apache.org), and the project that we've just downloaded includes a Maven "wrapper" file (`mvnw.cmd`) that can be used in place of an actual Maven installation to run build commands.
