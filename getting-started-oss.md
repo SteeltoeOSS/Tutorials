@@ -78,7 +78,7 @@ The other property, `spring.cloud.config.uri`, tells a Steel Toe Configuration c
 In the constructor of our `Startup.cs`, where we use the `ConfigurationBuilder`, we need to add the Config Server as a configuration source.
 
 ```
-using SteelToe.Extensions.Configuration;
+using Steeltoe.Extensions.Configuration;
 
 namespace Foo
 {
@@ -120,7 +120,7 @@ Open our `HomeController.cs` file. We need to give this controller an `IConfigur
 
 ```
 using Microsoft.Extensions.Configuration;
-using SteelToe.Extensions.Configuration.ConfigServer;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Foo.Controllers
 {

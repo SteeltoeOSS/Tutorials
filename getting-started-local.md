@@ -33,20 +33,20 @@ configserver> mvnw spring-boot:run
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
-    <add key="SteelToeMaster" value="https://www.myget.org/F/steeltoemaster/api/v3/index.json" />
-    <add key="SteelToeDev" value="https://www.myget.org/F/steeltoedev/api/v3/index.json" />
+    <add key="SteeltoeMaster" value="https://www.myget.org/F/steeltoemaster/api/v3/index.json" />
+    <add key="SteeltoeDev" value="https://www.myget.org/F/steeltoedev/api/v3/index.json" />
     <add key="NuGet" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
 </configuration>
 ```
 
-In the `dependencies` block of our `project.json` file, add the `SteelToe.Extensions.Configuration.ConfigServer` dependency:
+In the `dependencies` block of our `project.json` file, add the `Steeltoe.Extensions.Configuration.ConfigServer` dependency:
 
 ```
   "dependencies": {
     ...
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
-    "SteelToe.Extensions.Configuration.ConfigServer": "1.0.0-dev-*"
+    "Steeltoe.Extensions.Configuration.ConfigServer": "1.0.0-dev-*"
   },
 ```
 
@@ -80,7 +80,7 @@ The other property, `spring.cloud.config.uri`, tells a Steel Toe Configuration c
 In the constructor of our `Startup.cs`, where we use the `ConfigurationBuilder`, we need to add the Config Server as a configuration source.
 
 ```
-using SteelToe.Extensions.Configuration;
+using Steeltoe.Extensions.Configuration;
 
 namespace Steeltoe_OSS_Example
 {
@@ -122,7 +122,7 @@ Open our `HomeController.cs` file. We need to give this controller an `IConfigur
 
 ```
 using Microsoft.Extensions.Configuration;
-using SteelToe.Extensions.Configuration.ConfigServer;
+using Steeltoe.Extensions.Configuration.ConfigServer;
 
 namespace Steeltoe_OSS_Example.Controllers
 {
