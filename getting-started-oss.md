@@ -185,5 +185,5 @@ Application started. Press Ctrl+C to shut down.
 
 And in a browser, visit http://localhost:5000/Home/ConfigServer. You should see something like this:
 
-![config-server UI](http://steeltoe.io/img/getting-started/configuration.png)
+![config-server UI](https://github.com/SteeltoeOSS/Tutorials/blob/master/images/getting-started/configuration.png)
 
